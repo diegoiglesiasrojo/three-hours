@@ -1,17 +1,19 @@
-import React, {useState, useEffect} from "react"
+import React, {useEffect} from "react"
 
 const FirstHour = () => {
-    const [hour, setHour] = useState("")
 
     useEffect(() => {
-        const date = new Date()
-        setHour(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`)
+        setInterval(() => {
+            const date = new Date()
+            let actualHour = document.querySelector("#actualHour")
+            actualHour.innerText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        }, 1000)
     })
 
     return (
         <section>
             <p className="textHour">Actual hour</p>
-            <p className="hour">{hour}</p>
+            <p className="hour" id="actualHour">Loading...</p>
         </section>
     )
 }
